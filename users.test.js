@@ -14,7 +14,9 @@ describe('GET /users/show',() => { //Bloque donde se definen las pruebas sobre l
     T.get('users/show', {screen_name :username },function (err,data,response){ //funcion de Twit que te permite hacer el get de usuario del endpint de Twitter
       expect(data.screen_name).toBe(username); // Aqui hacemos la verificacion donde esperamos que la data que es un JSON con un parametro de scree_name sea igual al username que declaramos
       if (err) done(err); // Si hubo un error lo devolvemos usando la llamada a la funcion done(err)
-       else done(); // Si no hubo error devolvemos la funcion sin errores
+       else {
+         done();
+        console.log(data);}// Si no hubo error devolvemos la funcion sin errores, junto a la informacion del usuario 
     });
   });
 
