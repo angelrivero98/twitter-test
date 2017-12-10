@@ -9,9 +9,9 @@ var T = new Twit({
 });
 //Caso de Prueba
 describe('GET /users/show',() => { //Bloque donde se definen las pruebas sobre la funcionalidad descrita
-  it('deberia encontrar un usuario',(done) =>{ //Prueba donde se espera un usuario
+  it('deberia encontrar un usuario',(done) =>{ //Prueba donde se espera un usuario 
     var username = 'ucabiinf'; // variable donde se guarda el usuario q se desea buscar
-    T.get('users/show', {screen_name :username },function (err,data,response){ //funcion de Twit que te permite hacer el get de usuario del endpint de Twitter
+    T.get('users/show', {screen_name :username },function (err,data,response){ //'Ejecucion', funcion de Twit que te permite hacer el get de usuario del endpint de Twitter
       expect(data.screen_name).toBe(username); // Aqui hacemos la verificacion donde esperamos que la data que es un JSON con un parametro de scree_name sea igual al username que declaramos
       if (err) done(err); // Si hubo un error lo devolvemos usando la llamada a la funcion done(err)
        else {
@@ -22,7 +22,7 @@ describe('GET /users/show',() => { //Bloque donde se definen las pruebas sobre l
 
   it('no deberia encontrar un usuario',(done) =>{ //Prueba donde se espera que no se encuentre el usuario
     var username = 'UsuarioInvalido1234';
-    T.get('users/show', {screen_name :username },function (err,data,response){
+    T.get('users/show', {screen_name :username },function (err,data,response){ // Ejecucion
       if (err) done();  //Aqui si hubo un error devolvemos done() la cual significa que la paso la prueba ya que se esperaba un error, el cual era que no se encontro un usuario
       else done(data); // Si existe un usuario se devuelve done con la data del usuario, pero la prueba fallo
     }); //Para saber que err devuelve el error de User not found, eso lo sabemos por el paquete de Twit que lo atrapa
